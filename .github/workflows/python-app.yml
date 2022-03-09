@@ -36,6 +36,11 @@ jobs:
       with:
         role-to-assume: arn:aws:iam::834059441307:role/my-github-actions-role
         aws-region: us-east-1
+    - name: Setup DVC
+      uses: iterative/setup-dvc@v1
+    - name: Pull DVC
+      run: |
+        pull dvc
     - name: Test with pytest
       run: |
         pytest
