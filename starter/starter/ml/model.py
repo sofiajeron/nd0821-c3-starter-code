@@ -1,4 +1,5 @@
 from sklearn.metrics import fbeta_score, precision_score, recall_score
+import xgboost as xgb
 
 
 # Optional: implement hyperparameter tuning.
@@ -17,8 +18,10 @@ def train_model(X_train, y_train):
     model
         Trained machine learning model.
     """
-
-    pass
+    param = {'max_depth': 2, 'eta': 1, 'objective': 'binary:logistic'}
+    dtrain = xgb.DMatrix(X_train, label=y_train)
+    model = xgb.train(params=param, dtrain=dtrain)
+    return model
 
 
 def compute_model_metrics(y, preds):
@@ -57,4 +60,5 @@ def inference(model, X):
     preds : np.array
         Predictions from the model.
     """
-    pass
+    X = xgb.DMatrix(X)
+    return model.predict(X)
