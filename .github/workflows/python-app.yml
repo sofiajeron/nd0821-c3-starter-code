@@ -32,10 +32,12 @@ jobs:
         # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Configure AWS Credentials
-      uses: aws-actions/configure-aws-credentials@master
+      uses: aws-actions/configure-aws-credentials@v1
       with:
-        role-to-assume: arn:aws:iam::834059441307:role/my-github-actions-role
-        aws-region: us-east-1
+         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+         aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
+         aws-region: us-east-1
     - name: Setup DVC
       uses: iterative/setup-dvc@v1
     - name: Pull DVC
