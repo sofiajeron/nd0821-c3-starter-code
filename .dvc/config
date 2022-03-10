@@ -1,0 +1,2 @@
+['remote "raw_data"']
+    url = s3://nd0821-c3-starter-code/census.csv
