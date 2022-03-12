@@ -1,0 +1,4 @@
+[core]
+    remote = s3-bucket
+['remote "s3-bucket"']
+    url = s3://nd0821-c3-starter-code
