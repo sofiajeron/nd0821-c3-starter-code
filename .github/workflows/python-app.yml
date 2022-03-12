@@ -42,7 +42,7 @@ jobs:
       uses: iterative/setup-dvc@v1
     - name: Pull DVC
       run: |
-        dvc pull --force
+        dvc pull
     - name: Test with pytest
       run: |
         pytest
