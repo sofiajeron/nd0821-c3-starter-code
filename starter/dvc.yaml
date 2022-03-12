@@ -1,0 +1,25 @@
+stages:
+  clean_data:
+    cmd: python starter/clean_data.py
+    deps:
+      - starter/ml/clean.py
+      - data/census.csv
+    outs:
+      - data/clean_census.csv
+  model:
+    cmd: python starter/train_model.py
+    deps:
+      - data/clean_census.csv
+      - starter/ml/data.py
+      - starter/ml/model.py
+    outs:
+      - data/encoder.pickle
+      - data/lb.pickle
+      - model/model.json
+    metrics:
+      - model/fbeta.json:
+          cache: false
+      - model/precision.json:
+          cache: false
+      - model/recall.json:
+          cache: false
