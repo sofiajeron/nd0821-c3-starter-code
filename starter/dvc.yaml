@@ -6,7 +6,7 @@ stages:
       - data/census.csv
     outs:
       - data/clean_census.csv
-  model:
+  model_training:
     cmd: python starter/train_model.py
     deps:
       - data/clean_census.csv
@@ -16,6 +16,17 @@ stages:
       - data/encoder.pickle
       - data/lb.pickle
       - model/model.json
+      - data/train.csv
+      - data/test.csv
+  model_predictions:
+    cmd: python starter/predict_model.py
+    deps:
+      - data/test.csv
+      - data/encoder.pickle
+      - data/lb.pickle
+      - model/model.json
+    outs:
+      - model/slice_output.txt
     metrics:
       - model/fbeta.json:
           cache: false
