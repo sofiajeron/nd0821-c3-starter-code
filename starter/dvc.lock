@@ -1,0 +1,102 @@
+schema: '2.0'
+stages:
+  model:
+    cmd: python starter/train_model.py
+    deps:
+    - path: data/clean_census.csv
+      md5: 171eff96d34336df1a3d2d82bdb82fe3
+      size: 3811654
+    - path: starter/ml/data.py
+      md5: 6979161b4d3418b42c1e04036651878b
+      size: 2544
+    - path: starter/ml/model.py
+      md5: 744e1e91852bdddb83e8903de394e401
+      size: 1803
+    outs:
+    - path: data/encoder.pickle
+      md5: df25af683db4d98905ddb9994cf3a36a
+      size: 1933
+    - path: data/lb.pickle
+      md5: a949216ef27f3c0a18cf18bcdaaac365
+      size: 366
+    - path: model/fbeta.json
+      md5: c967ec295a6e4ec959aa9dc17d09ec6c
+      size: 29
+    - path: model/model.json
+      md5: bc59380cc7cf12089b0f8107c0149536
+      size: 8192
+    - path: model/precision.json
+      md5: e1f827fa862acb7b3d53867a1152ede1
+      size: 33
+    - path: model/recall.json
+      md5: d17890e77ccbc6d3a7ed3e70afaacd77
+      size: 30
+  clean_data:
+    cmd: python starter/clean_data.py
+    deps:
+    - path: data/census.csv
+      md5: 145de00f6e6053d3f7044628f9a5b5ff
+      size: 3974474
+    - path: starter/ml/clean.py
+      md5: 299a35e5da2911e4c78c3fcfd3343107
+      size: 99
+    outs:
+    - path: data/clean_census.csv
+      md5: 171eff96d34336df1a3d2d82bdb82fe3
+      size: 3811654
+  model_training:
+    cmd: python starter/train_model.py
+    deps:
+    - path: data/clean_census.csv
+      md5: 171eff96d34336df1a3d2d82bdb82fe3
+      size: 3811654
+    - path: starter/ml/data.py
+      md5: 6979161b4d3418b42c1e04036651878b
+      size: 2544
+    - path: starter/ml/model.py
+      md5: b7f381892e96f30383b9fafdb88c1e2d
+      size: 697
+    outs:
+    - path: data/encoder.pickle
+      md5: f951141c21b80b8de2759045f76598d6
+      size: 1911
+    - path: data/lb.pickle
+      md5: a949216ef27f3c0a18cf18bcdaaac365
+      size: 366
+    - path: data/test.csv
+      md5: ecccca181f431bffc59e6e784bbc3f26
+      size: 761910
+    - path: data/train.csv
+      md5: 5c5d387194524981a2b6a9dd3682cda3
+      size: 3049899
+    - path: model/model.json
+      md5: e8939b1b7e24a5a4fb05c017123d399b
+      size: 8207
+  model_predictions:
+    cmd: python starter/predict_models.py
+    deps:
+    - path: data/encoder.pickle
+      md5: f951141c21b80b8de2759045f76598d6
+      size: 1911
+    - path: data/lb.pickle
+      md5: a949216ef27f3c0a18cf18bcdaaac365
+      size: 366
+    - path: data/test.csv
+      md5: ecccca181f431bffc59e6e784bbc3f26
+      size: 761910
+    - path: model/model.json
+      md5: e8939b1b7e24a5a4fb05c017123d399b
+      size: 8207
+    outs:
+    - path: model/fbeta.json
+      md5: 23bc1ae88348b93a6292f0f81fe3968f
+      size: 29
+    - path: model/precision.json
+      md5: 1ad43060e02bce986094f5b60276baf1
+      size: 33
+    - path: model/recall.json
+      md5: 4257d5ae547d4c4693aa77a1304854c9
+      size: 30
+    - path: model/slice_output.txt
+      md5: 33175303b3af0915524b06f83c64ee29
+      size: 5996
