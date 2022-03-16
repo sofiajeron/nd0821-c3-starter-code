@@ -43,11 +43,13 @@ def process_data_train_fixture(train_data, cat):
         train_data, categorical_features=cat, label="salary", training=True)
     return X, y
 
+
 @pytest.fixture
 def encoder_lb_fixture(train_data, cat):
     _, _, encoder, lb = process_data(
         train_data, categorical_features=cat, label="salary", training=True)
     return encoder, lb
+
 
 @pytest.fixture
 def process_data_test_fixture(test_data, cat, encoder_lb):
@@ -57,11 +59,13 @@ def process_data_test_fixture(test_data, cat, encoder_lb):
     )
     return X, y
 
+
 @pytest.fixture
 def train_model(process_data_train_fixture):
     X_train, y_train = process_data_train_fixture
     model = train_model(X_train, y_train)
     return model
+
 
 @pytest.fixture
 def predictions(model, process_data_test_fixture):
