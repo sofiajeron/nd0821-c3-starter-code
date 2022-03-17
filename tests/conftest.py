@@ -69,7 +69,7 @@ def train_model_fixture(process_data_train_fixture):
 
 
 @pytest.fixture
-def predictions_fixture(model, process_data_test_fixture):
+def predictions_fixture(train_model_fixture, process_data_test_fixture):
     X_test, _ = process_data_test_fixture
-    preds = inference(model, X_test)
+    preds = inference(train_model_fixture, X_test)
     return preds
