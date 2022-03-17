@@ -62,14 +62,14 @@ def process_data_test_fixture(test_data, cat, encoder_lb):
 
 
 @pytest.fixture
-def train_model(process_data_train_fixture):
+def train_model_fixture(process_data_train_fixture):
     X_train, y_train = process_data_train_fixture
     model = train_model(X_train, y_train)
     return model
 
 
 @pytest.fixture
-def predictions(model, process_data_test_fixture):
+def predictions_fixture(model, process_data_test_fixture):
     X_test, _ = process_data_test_fixture
     preds = inference(model, X_test)
     return preds

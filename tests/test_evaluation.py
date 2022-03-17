@@ -1,9 +1,9 @@
 from starter.ml.evaluation import compute_model_metrics, inference
 
 
-def test_inference(model, process_data_test_fixture):
+def test_inference(train_model_fixture, process_data_test_fixture):
     X_test, _ = process_data_test_fixture
-    preds = inference(model, X_test)
+    preds = inference(train_model_fixture, X_test)
 
     assert preds.size[0] == X_test.shape[0]
 
