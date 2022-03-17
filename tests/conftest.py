@@ -8,7 +8,7 @@ from starter.ml.evaluation import inference
 
 @pytest.fixture
 def data_fixture():
-    return pd.read_csv("data/clean_census.csv")
+    return pd.read_csv("starter/data/clean_census.csv")
 
 
 @pytest.fixture
