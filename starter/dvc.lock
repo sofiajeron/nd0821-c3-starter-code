@@ -73,7 +73,7 @@ stages:
       md5: e8939b1b7e24a5a4fb05c017123d399b
       size: 8207
   model_predictions:
-    cmd: python starter/predict_models.py
+    cmd: python starter/predict_model.py
     deps:
     - path: data/encoder.pickle
       md5: f951141c21b80b8de2759045f76598d6
