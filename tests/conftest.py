@@ -18,8 +18,8 @@ def train_data_fixture(data_fixture):
 
 
 @pytest.fixture
-def test_data_fixture(data):
-    _, test = train_test_split(data, test_size=0.20)
+def test_data_fixture(data_fixture):
+    _, test = train_test_split(data_fixture, test_size=0.20)
     return test
 
 
