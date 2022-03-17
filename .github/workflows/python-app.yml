@@ -45,4 +45,4 @@ jobs:
         dvc pull --force
     - name: Test with pytest
       run: |
-        pytest
+        pytest -v
