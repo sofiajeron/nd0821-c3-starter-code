@@ -41,7 +41,7 @@ def cat_features_fixture():
 @pytest.fixture
 def process_data_train_fixture(train_data_fixture, cat_features_fixture):
     X, y, _, _ = process_data(
-        train_data, categorical_features=cat, label="salary", training=True)
+        train_data_fixture, categorical_features=cat_features_fixture, label="salary", training=True)
     return X, y
 
 
