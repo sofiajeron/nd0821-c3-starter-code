@@ -8,9 +8,9 @@ def test_inference(train_model_fixture, process_data_test_fixture):
     assert preds.size[0] == X_test.shape[0]
 
 
-def test_compute_model_metrics(process_data_test_fixture, predictions):
+def test_compute_model_metrics(process_data_test_fixture, predictions_fixture):
     _, y_test = process_data_test_fixture
-    precision, recall, fbeta = compute_model_metrics(y_test, predictions)
+    precision, recall, fbeta = compute_model_metrics(y_test, predictions_fixture)
 
     assert isinstance(precision, float)
     assert isinstance(recall, float)
