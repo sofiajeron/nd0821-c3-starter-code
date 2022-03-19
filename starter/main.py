@@ -34,7 +34,7 @@ async def startup_event() -> None:
 
 
 @app.get("/")
-def read_root() -> json:
+async def read_root() -> json:
     return {"message": "Welcome to the API that predicts salary from census data"}
 
 
