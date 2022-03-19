@@ -6,9 +6,9 @@ import logging
 import json
 from pydantic import BaseModel
 from fastapi import FastAPI
-from starter.ml.data import process_data
-from starter.ml.evaluation import inference
-from starter.ml.model import load_xgb_model
+from starter.starter.ml.data import process_data
+from starter.starter.ml.evaluation import inference
+from starter.starter.ml.model import load_xgb_model
 
 if "DYNO" in os.environ and os.path.isdir(".dvc"):
     os.system("dvc config core.no_scm true")

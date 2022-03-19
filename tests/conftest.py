@@ -1,15 +1,15 @@
 import os
 import sys
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'starter')))
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 import json
 import pytest
 import pandas as pd
 from fastapi.testclient import TestClient
 from sklearn.model_selection import train_test_split
 from main import app
-from starter.ml.data import process_data
-from starter.ml.model import train_model
-from starter.ml.evaluation import inference
+from starter.starter.ml.data import process_data
+from starter.starter.ml.model import train_model
+from starter.starter.ml.evaluation import inference
 
 
 @pytest.fixture(scope='session')

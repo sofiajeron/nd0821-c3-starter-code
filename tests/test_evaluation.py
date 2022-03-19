@@ -1,4 +1,4 @@
-from starter.ml.evaluation import compute_model_metrics, inference
+from starter.starter.ml.evaluation import compute_model_metrics, inference
 
 
 def test_inference(train_model_fixture, process_data_test_fixture):
