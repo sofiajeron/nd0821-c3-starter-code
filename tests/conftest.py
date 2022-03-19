@@ -1,7 +1,6 @@
 import os
 import sys
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-import json
 import pytest
 import pandas as pd
 from fastapi.testclient import TestClient
@@ -14,7 +13,7 @@ from starter.starter.ml.evaluation import inference
 
 @pytest.fixture(scope='session')
 def data_fixture():
-    return pd.read_csv("starter/data/clean_census.csv")
+    return pd.read_csv("starter/starter/data/clean_census.csv")
 
 
 @pytest.fixture(scope='session')
