@@ -61,6 +61,24 @@ class CensusDataSchema(BaseModel):
 
     class Config:
         alias_generator = replace_dash
+        schema_extra = {
+            "example": {
+                'age': 19,
+                'workclass': 'Private',
+                'fnlgt': 168294,
+                'education': 'HS-grad',
+                'education-num': 9,
+                'marital-status': 'Never-married',
+                'occupation': 'Craft-repair',
+                'relationship': 'Own-child',
+                'race': 'White',
+                'sex': 'Male',
+                'capital-gain': 0,
+                'capital-loss': 0,
+                'hours-per-week': 40,
+                'native-country': 'United-States'
+            }
+        }
 
 
 @app.post('/predict')
